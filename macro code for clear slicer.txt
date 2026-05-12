@@ -1,0 +1,27 @@
+Sub Clear_Slicers_Only_Dashboard_sales()
+
+    Dim sc As SlicerCache
+    Dim sl As Slicer
+    Dim ws As Worksheet
+
+    
+    Set ws = ThisWorkbook.Worksheets("اسم الصفحه")
+
+    
+    For Each sc In ThisWorkbook.SlicerCaches
+
+        
+        For Each sl In sc.Slicers
+
+            
+            If sl.Parent.Name = ws.Name Then
+                sc.ClearManualFilter
+                Exit For
+            End If
+
+        Next sl
+
+    Next sc
+
+End Sub
+
